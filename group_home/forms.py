@@ -19,7 +19,7 @@ class ResidentForm(forms.ModelForm):
             'notes': forms.Textarea(attrs={'rows': 3, 'placeholder': '特記事項'}),
         }
         labels = {
-            'resident_code': '利用者コード',
+            'resident_code': '受給者番号',
             'name': '氏名',
             'birth_date': '生年月日',
             'care_level': '要介護度',
