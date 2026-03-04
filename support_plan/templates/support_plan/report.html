@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        body {
+            font-family: "IPAexGothic", sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 4px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>個別支援計画表</h1>
+
+    <table>
+        <tr>
+            <th>利用者</th>
+            <td>{{ plan.resident.name }}</td>
+        </tr>
+        <tr>
+            <th>作成日</th>
+            <td>{{ plan.created_at }}</td>
+        </tr>
+    </table>
+
+    <h3>総合的な援助方針</h3>
+    <p>{{ plan.overall_policy }}</p>
+
+    <h3>長期目標</h3>
+    <p>{{ plan.long_term_goal }}</p>
+
+    <h3>短期目標</h3>
+    <p>{{ plan.short_term_goal }}</p>
+
+    <h3>支援内容</h3>
+    <table>
+        <tr>
+            <th>目標</th>
+            <th>支援内容</th>
+            <th>評価時期</th>
+            <th>担当</th>
+        </tr>
+        {% for i in plan.items.all %}
+        <tr>
+            <td>{{ i.goal }}</td>
+            <td>{{ i.content }}</td>
+            <td>{{ i.evaluation_time }}</td>
+            <td>{{ i.staff }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
